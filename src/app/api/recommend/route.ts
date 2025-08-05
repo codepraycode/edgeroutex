@@ -1,14 +1,17 @@
+import { generateRecommendations } from '@/lib/recommendations/engine';
+import { NextResponse } from 'next/server';
 
-import { NextRequest, NextResponse } from 'next/server';
-import { generateRecommendations } from '@/lib/recommendation';
-
-export async function POST(req: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const body = await req.json();
-    const recommendations = generateRecommendations(body);
-    return NextResponse.json({ recommendations });
-  } catch (e) {
-    console.error("Error Occured", e);
-    return NextResponse.json({ error: 'Invalid input' }, { status: 400 });
+    const inputData = await request.json();
+    const recommendations = generateRecommendations(inputData);
+    
+    return NextResponse.json({ recommendations }, { status: 200 });
+  } catch (error) {
+    console.error(error)
+    return NextResponse.json(
+      { error: 'Failed to generate recommendations' },
+      { status: 500 }
+    );
   }
 }

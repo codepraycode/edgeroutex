@@ -1,0 +1,90 @@
+{
+    "users": [
+        {
+            "id": 1,
+            "name": "Admin",
+            "email": "admin@edge-advisory.com",
+            "password": "securepassword123",
+            "role": "admin"
+        },
+        {
+            "id": 2,
+            "name": "Transport Manager",
+            "email": "manager@example.com",
+            "password": "transport123",
+            "role": "manager"
+        }
+    ],
+    "caseStudies": [
+        {
+            "id": 1,
+            "title": "Smart Traffic Management in Berlin",
+            "description": "Edge nodes reduced traffic congestion by 22% through real-time signal optimization.",
+            "environment": "urban",
+            "vehicleType": [
+                "mixed"
+            ],
+            "challenges": [
+                "High latency in cloud-based processing",
+                "Network congestion during peak hours",
+                "Data privacy concerns"
+            ],
+            "solutions": [
+                "Deployed edge nodes at intersections",
+                "Local processing of camera feeds",
+                "Anonymization at edge before cloud transmission"
+            ],
+            "outcomes": [
+                "22% reduction in average congestion",
+                "40% lower bandwidth costs",
+                "Improved privacy compliance"
+            ]
+        }
+    ],
+    "recommendations": [
+        {
+            "id": "edge-ai-001",
+            "title": "Edge AI for Real-time Processing",
+            "description": "Implement edge AI nodes for processing camera and sensor data locally to reduce latency.",
+            "priority": "high",
+            "implementationSteps": [
+                "Assess current sensor suite",
+                "Select edge hardware with NPU support",
+                "Develop lightweight ML models",
+                "Deploy to pilot vehicles"
+            ],
+            "estimatedImpact": "Reduce latency by 70-90% for real-time decisions",
+            "costEstimate": "high",
+            "environment": "urban",
+            "vehicleType": "mixed",
+            "dataNeeds": [
+                "real-time"
+            ]
+        },
+        {
+            "id": "data-filter-002",
+            "title": "Edge-based Data Filtering",
+            "description": "Use edge nodes to filter and preprocess data before cloud transmission.",
+            "priority": "medium",
+            "implementationSteps": [
+                "Identify high-volume data sources",
+                "Implement filtering algorithms",
+                "Establish data retention policies"
+            ],
+            "estimatedImpact": "Reduce cloud storage costs by 40-60%",
+            "costEstimate": "medium",
+            "environment": [
+                "urban",
+                "rural"
+            ],
+            "vehicleType": [
+                "mixed",
+                "trucks"
+            ],
+            "dataNeeds": [
+                "historical",
+                "predictive"
+            ]
+        }
+    ]
+}
