@@ -5,6 +5,7 @@
       "name": "wbaf",
       "dependencies": {
         "@radix-ui/react-slot": "^1.2.3",
+        "@tailwindcss/postcss": "^4.1.11",
         "axios": "^1.11.0",
         "chart.js": "^4.5.0",
         "class-variance-authority": "^0.7.1",
@@ -22,7 +23,6 @@
       },
       "devDependencies": {
         "@eslint/eslintrc": "^3",
-        "@tailwindcss/postcss": "^4",
         "@types/file-saver": "^2.0.7",
         "@types/node": "^24.2.0",
         "@types/react": "^19",
