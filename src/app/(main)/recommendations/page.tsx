@@ -1,12 +1,12 @@
-// src/app/(main)/recommendations/page.tsx
-import { auth } from "@/lib/auth";
+
 import { redirect } from "next/navigation";
 import RoadmapGenerator from "@/components/recommendations/RoadmapGenerator";
 import RecommendationCard from "@/components/recommendations/RecommendationCard";
 import { getRecommendations } from "@/lib/recommendations/action";
+import { getServerSession } from "next-auth";
 
 export default async function RecommendationsPage() {
-    const session = await auth();
+    const session = await getServerSession();
 
     // Redirect unauthenticated users
     if (!session) {

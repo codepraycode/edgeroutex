@@ -1,7 +1,7 @@
 // src/app/login/page.tsx
 "use client";
 
-import { signIn } from "@/lib/auth";
+import { useSession } from "@/lib/auth/client";
 import { useRouter } from "next/navigation";
 import { useState } from "react";
 
@@ -10,6 +10,7 @@ export default function LoginPage() {
     const [password, setPassword] = useState("");
     const [error, setError] = useState("");
     const router = useRouter();
+    const {signIn} = useSession();
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault();
@@ -19,7 +20,7 @@ export default function LoginPage() {
             const result = await signIn("credentials", {
                 email,
                 password,
-                redirect: false,
+                redirect: "/",
             });
 
             if (result?.error) {

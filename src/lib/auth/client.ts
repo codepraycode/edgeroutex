@@ -1,4 +1,4 @@
-// src/lib/auth/client.ts
+
 'use client';
 
 import { signIn as nextAuthSignIn, signOut as nextAuthSignOut, useSession as nextAuthUseSession } from "next-auth/react";
