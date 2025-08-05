@@ -20,13 +20,14 @@ export default function LoginPage() {
             const result = await signIn("credentials", {
                 email,
                 password,
-                redirect: "/",
+                callbackUrl: "/login",
+                redirect: false,
             });
 
             if (result?.error) {
                 setError("Invalid credentials");
             } else {
-                router.push("/admin");
+                router.push("/simulate");
             }
         } catch (err) {
             console.error(err);

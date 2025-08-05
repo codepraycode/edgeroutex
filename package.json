@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "json-server": "json-server --watch db.json --port 3001",
+    "json-server": "json-server --watch ./src/data/db.json --port 3001",
     "dev:all": "concurrently \"bun run json-server\" \"bun run dev\"",
     "build": "next build",
     "start": "next start",

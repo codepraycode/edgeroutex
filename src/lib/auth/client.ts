@@ -32,11 +32,10 @@ export function useSession() {
 
     async function signIn(
         provider?: string,
-        options?: Record<string, string>
+        options?: Record<string, string | boolean>
     ) {
         try {
             const result = await nextAuthSignIn(provider, {
-                redirect: false,
                 ...options
             });
 

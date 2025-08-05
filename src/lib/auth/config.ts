@@ -2,6 +2,7 @@
 import Credentials from "next-auth/providers/credentials";
 import api from "../api/client";
 import { DefaultSession } from "next-auth";
+import axios from "axios";
 
 
 declare module "next-auth" {
@@ -36,7 +37,7 @@ export const authOptions = {
             authorize: async (credentials) => {
                 try {
                     if (!credentials) return null;
-                    const response = await api.get(`${API_URL}/users?email=${credentials.email}`);
+                    const response = await axios.get(`${API_URL}/users?email=${credentials.email}`);
                     const users = response.data;
                 
                     if (users.length === 0) return null;
