@@ -1,18 +1,11 @@
-import { redirect } from "next/navigation";
+
 import RoadmapGenerator from "@/components/recommendations/RoadmapGenerator";
 import RecommendationCard from "@/components/recommendations/RecommendationCard";
 import { getRecommendations } from "@/lib/recommendations/action";
-import { getServerSession } from "next-auth";
 
 export default async function RecommendationsPage() {
-    const session = await getServerSession();
 
-    // Redirect unauthenticated users
-    if (!session) {
-        redirect("/login");
-    }
-
-    const recommendations = await getRecommendations(session.user.id);
+    const recommendations = await getRecommendations();
 
     const prioritySections = [
         { level: "high", label: "High Priority", color: "bg-red-500" },

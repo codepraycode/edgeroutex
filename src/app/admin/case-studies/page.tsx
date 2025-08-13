@@ -1,16 +1,7 @@
-// src/app/(admin)/case-studies/page.tsx
-
-import { redirect } from "next/navigation";
 import CaseStudyTable from "@/components/admin/CaseStudyTable";
 import { getCaseStudies } from "@/lib/case-studies/data";
-import { getServerSession } from "next-auth";
 
 export default async function CaseStudiesAdminPage() {
-    const session = await getServerSession();
-
-    if (!session || session.user.role !== "admin") {
-        redirect("/login");
-    }
 
     const caseStudies = await getCaseStudies();
 

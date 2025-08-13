@@ -1,32 +1,7 @@
-// src/lib/recommendations/actions.ts
-import axios from 'axios';
-import api from '../api/client';
 import { Recommendation } from './types';
 
-
-const API_URL = 'http://localhost:3001';
-
-export async function getRecommendations(userId: string): Promise<Recommendation[]> {
-  try {
-    // First get user's scenario data from JSON Server
-    const userResponse = await axios.get(`${API_URL}/users/${userId}`);
-    const userScenario = userResponse.data.scenario; // Assuming scenario data is stored in user object
-    
-    // Then get recommendations based on scenario
-    const response = await axios.get(`${API_URL}/recommendations`, {
-      params: {
-        environment: userScenario.environment,
-        vehicleType: userScenario.vehicleType,
-        dataNeeds: userScenario.dataNeeds.join(',')
-      }
-    });
-    
-    return response.data;
-  } catch (error) {
-    console.error('Error fetching recommendations:', error);
-    
-    // Fallback to mock data if JSON Server fails
-    return [
+export async function getRecommendations(): Promise<Recommendation[]> {
+  return [
       {
         id: "edge-ai-001",
         title: "Edge AI for Real-time Processing",
@@ -55,5 +30,4 @@ export async function getRecommendations(userId: string): Promise<Recommendation
         costEstimate: "medium"
       }
     ];
-  }
 }
