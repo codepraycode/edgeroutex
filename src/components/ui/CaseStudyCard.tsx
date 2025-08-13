@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
     return (
-        <div className="bg-white rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
+        <div className="bg-white dark:bg-blue-950 rounded-lg shadow-md overflow-hidden hover:shadow-lg transition-shadow duration-300">
             <div className="p-6">
                 <div className="flex items-center mb-3">
                     <span
@@ -20,15 +20,15 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
                     </span>
                 </div>
 
-                <h3 className="text-xl font-semibold text-gray-900 mb-2">
+                <h3 className="text-xl font-semibold text-gray-900 dark:text-gray-300 mb-2">
                     {caseStudy.title}
                 </h3>
-                <p className="text-gray-600 mb-4 line-clamp-3">
+                <p className="text-gray-600 dark:text-gray-400 mb-4 line-clamp-3">
                     {caseStudy.description}
                 </p>
 
                 <div className="mb-4">
-                    <h4 className="text-sm font-medium text-gray-500 mb-1">
+                    <h4 className="text-sm font-medium text-gray-500 dark:text-gray-300 mb-1">
                         Vehicle Types
                     </h4>
                     <div className="flex flex-wrap gap-1">
@@ -45,7 +45,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
 
                 {caseStudy.outcomes && caseStudy.outcomes.length > 0 && (
                     <div className="mb-4">
-                        <h4 className="text-sm font-medium text-gray-500 mb-1">
+                        <h4 className="text-sm font-medium text-gray-500 dark:text-gray-300 mb-1">
                             Key Outcomes
                         </h4>
                         <ul className="space-y-1">
@@ -69,7 +69,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
                                                 d="M5 13l4 4L19 7"
                                             />
                                         </svg>
-                                        <span className="text-sm text-gray-700">
+                                        <span className="text-sm text-gray-700 dark:text-gray-400">
                                             {outcome}
                                         </span>
                                     </li>
@@ -79,7 +79,7 @@ export default function CaseStudyCard({ caseStudy }: { caseStudy: CaseStudy }) {
                 )}
 
                 <Link
-                    href={`/case-studies/${caseStudy.id}`}
+                    href={`/case-studies/#`}
                     className="inline-flex items-center text-blue-600 hover:text-blue-800 font-medium transition-colors"
                 >
                     View details

@@ -6,11 +6,11 @@ export default async function CaseStudiesPage() {
     const caseStudies = await getCaseStudies();
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <section className="max-w-6xl mx-auto p-6">
+            <h1 className="text-3xl font-bold text-gray-900 dark:text-gray-300 mb-2">
                 Edge Computing Case Studies
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-gray-600 mb-10">
                 Explore real-world implementations of edge computing in
                 transportation.
             </p>
@@ -20,6 +20,6 @@ export default async function CaseStudiesPage() {
                     <CaseStudyCard key={study.id} caseStudy={study} />
                 ))}
             </div>
-        </div>
+        </section>
     );
 }

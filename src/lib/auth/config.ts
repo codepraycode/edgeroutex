@@ -1,6 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import Credentials from "next-auth/providers/credentials";
-import api from "../api/client";
 import { DefaultSession } from "next-auth";
 import axios from "axios";
 

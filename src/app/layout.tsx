@@ -1,10 +1,18 @@
-import "./globals.css";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
-import Navbar from "@/components/layouts/Navbar";
+import { Geist, Geist_Mono } from "next/font/google";
 import { AuthProvider } from "@/components/providers/AuthProvider";
+import "./globals.css";
+import Footer from "@/components/common/Footer";
 
-const inter = Inter({ subsets: ["latin"] });
+const geistSans = Geist({
+    variable: "--font-geist-sans",
+    subsets: ["latin"],
+});
+
+const geistMono = Geist_Mono({
+    variable: "--font-geist-mono",
+    subsets: ["latin"],
+});
 
 export const metadata: Metadata = {
     title: "Edge Computing Advisory",
@@ -20,23 +28,16 @@ export default function RootLayout({
     return (
         <html lang="en" suppressHydrationWarning>
             <body
-                className={`${inter.className} antialiased bg-gray-50 text-gray-900`}
+                className={`${geistSans.variable} ${geistMono.variable} antialiased bg-gray-50 text-gray-900`}
             >
                 <AuthProvider>
-                    <div className="min-h-screen flex flex-col">
-                        <Navbar />
-                        <main className="flex-1">
-                            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
-                                {children}
-                            </div>
-                        </main>
-                        <footer className="border-t bg-white py-6">
-                            <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-500">
-                                © {new Date().getFullYear()} Edge Computing
-                                Advisory Framework
-                            </div>
-                        </footer>
-                    </div>
+                    <main className="min-h-screen">
+                        {children}
+                        {/* <ThemeToggler /> */}
+                        {/* <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 py-8">
+                            </div> */}
+                    </main>
+                    <Footer />
                 </AuthProvider>
             </body>
         </html>

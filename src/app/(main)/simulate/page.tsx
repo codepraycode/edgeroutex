@@ -1,5 +1,4 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-
 "use client";
 
 import SimulationChart from "@/components/simulations/SimulationChart";
@@ -27,10 +26,8 @@ export default function SimulatePage() {
     const [results, setResults] = useState<any>(null);
 
     const runSimulation = (scenarioId: string) => {
-        // In a real app, this would call an API or perform calculations
         setActiveScenario(scenarioId);
 
-        // Mock results
         setTimeout(() => {
             if (scenarioId === "latency-comparison") {
                 setResults({
@@ -92,11 +89,11 @@ export default function SimulatePage() {
     };
 
     return (
-        <div className="max-w-6xl mx-auto p-6">
-            <h1 className="text-3xl font-bold text-gray-900 mb-2">
+        <div className="max-w-6xl mx-auto p-6 bg-background">
+            <h1 className="text-3xl font-bold text-foreground mb-2">
                 Edge Computing Simulations
             </h1>
-            <p className="text-gray-600 mb-8">
+            <p className="text-muted-foreground mb-8">
                 Explore different edge computing scenarios and their potential
                 impacts.
             </p>
@@ -105,17 +102,17 @@ export default function SimulatePage() {
                 {simulationScenarios.map((scenario) => (
                     <div
                         key={scenario.id}
-                        className="border rounded-lg p-4 hover:shadow-md transition"
+                        className="bg-card border border-border rounded-lg p-4 hover:shadow-md transition"
                     >
-                        <h3 className="text-xl font-semibold mb-2">
+                        <h3 className="text-xl font-semibold text-foreground mb-2">
                             {scenario.title}
                         </h3>
-                        <p className="text-gray-600 mb-4">
+                        <p className="text-muted-foreground mb-4">
                             {scenario.description}
                         </p>
                         <button
                             onClick={() => runSimulation(scenario.id)}
-                            className="bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-md transition"
+                            className="bg-primary hover:bg-primary/90 text-primary-foreground font-medium py-2 px-4 rounded-md transition"
                         >
                             Run Simulation
                         </button>
@@ -124,8 +121,8 @@ export default function SimulatePage() {
             </div>
 
             {activeScenario && (
-                <div className="bg-gray-50 p-6 rounded-lg">
-                    <h2 className="text-2xl font-bold mb-4">
+                <div className="bg-card border border-border p-6 rounded-lg">
+                    <h2 className="text-2xl font-bold text-foreground mb-4">
                         {
                             simulationScenarios.find(
                                 (s) => s.id === activeScenario
@@ -139,12 +136,12 @@ export default function SimulatePage() {
                                 {results.metrics.map((metric: any) => (
                                     <div
                                         key={metric.name}
-                                        className="bg-white p-4 rounded shadow"
+                                        className="bg-card border border-border p-4 rounded shadow"
                                     >
-                                        <h4 className="font-medium text-gray-700">
+                                        <h4 className="font-medium text-muted-foreground">
                                             {metric.name}
                                         </h4>
-                                        <p className="text-2xl font-bold mt-1">
+                                        <p className="text-2xl font-bold text-foreground mt-1">
                                             {metric.value}
                                         </p>
                                         {metric.improvement && (
@@ -156,21 +153,20 @@ export default function SimulatePage() {
                                 ))}
                             </div>
 
-                            <div className="bg-white p-4 rounded shadow">
-                                <h4 className="font-medium text-gray-700 mb-4">
+                            <div className="bg-card border border-border p-4 rounded shadow">
+                                <h4 className="font-medium text-muted-foreground mb-4">
                                     Visualization
                                 </h4>
-                                {/* In a real app, we'd use Chart.js or similar here */}
                                 <div className="h-96">
                                     <SimulationChart data={results.chartData} />
                                 </div>
                             </div>
 
-                            <div className="bg-white p-4 rounded shadow">
-                                <h4 className="font-medium text-gray-700 mb-2">
+                            <div className="bg-card border border-border p-4 rounded shadow">
+                                <h4 className="font-medium text-muted-foreground mb-2">
                                     Key Takeaways
                                 </h4>
-                                <ul className="list-disc pl-5 space-y-1">
+                                <ul className="list-disc pl-5 space-y-1 text-foreground">
                                     <li>
                                         Edge computing significantly reduces
                                         latency for real-time applications
@@ -188,7 +184,7 @@ export default function SimulatePage() {
                         </div>
                     ) : (
                         <div className="flex justify-center items-center h-32">
-                            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-blue-500"></div>
+                            <div className="animate-spin rounded-full h-8 w-8 border-t-2 border-b-2 border-primary"></div>
                         </div>
                     )}
                 </div>
