@@ -1,0 +1,41 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-neutral-50: #F2F2F2;
+  --color-neutral-100: #E6E6E6;
+  --color-neutral-700: #0D0D0D;
+  --color-blue-100: #61758A;
+}
+
+/* @theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+} */
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: theme(colors.neutral.900);
+    --foreground: theme(colors.neutral.50);
+  }
+} */
+
+
+aside {
+    background-color: var(--color-neutral-100);
+    color: var(--color-neutral-700)
+
+}
+
+/* Navigation */
+
+nav {
+    a {
+        &[data-active="true"],
+        &:hover{
+            background-color: var(--color-blue-100);
+            color: var(--color-neutral-50);
+        }
+    }
+}
