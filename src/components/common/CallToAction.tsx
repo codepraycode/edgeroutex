@@ -1,6 +1,8 @@
 
+import clsx from "clsx";
 import Link from "next/link";
 import React from "react";
+
 
 
 type Props = {
@@ -9,16 +11,18 @@ type Props = {
     cta: {
         link: string;
         label:string;
-    }
+    };
+    className?: string;
 }
 
 const CallToAction = ({
     title,
     cta,
-    description
+    description,
+    className
 }: Props) => {
     return (
-        <section className="py-16">
+        <section className={clsx("py-16", className)}>
             <div className="text-center lg:text-left">
                 <header className="mb-8 max-w-5xl">
                     <h2 className="text-3xl lg:text-6xl font-semibold text-neutral-900 mb-4">

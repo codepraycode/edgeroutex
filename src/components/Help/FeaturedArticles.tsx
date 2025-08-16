@@ -38,7 +38,7 @@ export default function FeaturedArticlesSection() {
 
 
     return (
-        <section className="py-16 px-4 sm:px-6 lg:px-8 bg-white">
+        <section className="py-16 px-4 sm:px-6 lg:px-8">
             <div className="">
                 {/* Section Header with Toggle */}
                 <div className="flex items-center justify-between mb-8">

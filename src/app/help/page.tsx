@@ -10,6 +10,7 @@ export default function Help() {
             <SupportPathSection />
             <FeaturedArticlesSection />
             <CallToAction
+                className="px-4 sm:px-6 lg:px-8"
                 cta={{
                     label: "Contact us",
                     link: "#",

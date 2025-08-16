@@ -18,6 +18,7 @@ const navigationItems: NavigationItem[] = [
         label: "Case study explorer",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/0MpYeTVsXd.svg",
         isActive: true,
+        link: "/"
     },
     {
         id: "recommendation",
