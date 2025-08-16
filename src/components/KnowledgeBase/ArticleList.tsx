@@ -1,3 +1,4 @@
+import Image from "next/image";
 import Link from "next/link";
 
 const articles = [
@@ -58,8 +59,9 @@ export default function ArticlesList() {
     );
 }
 
+type Article = {[k:string]: string | number | null};
 
-export function ArticleItem({article}:{article:any}) {
+export function ArticleItem({article}:{article: Article}) {
     return (
         <article
             
@@ -87,7 +89,7 @@ export function ArticleItem({article}:{article:any}) {
                         </p>
                     </div>
                     <Link
-                        href={article.link}
+                        href={article.link as string}
                         className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 w-fit text-sm"
                     >
                         Read more
@@ -109,10 +111,11 @@ export function ArticleItem({article}:{article:any}) {
                 {/* Article Image - Only render if image exists */}
                 {article.image && (
                     <div className="sm:w-48 sm:flex-shrink-0">
-                        <img
-                            src={article.image}
-                            alt={article.title}
+                        <Image
+                            src={article.image as string}
+                            alt={article.title as string}
                             className="w-full h-32 sm:h-full sm:min-h-[140px] object-cover sm:rounded-r-lg"
+                            fill
                         />
                     </div>
                 )}
