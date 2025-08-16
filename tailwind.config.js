@@ -12,6 +12,9 @@ export default {
           dark: "#17154D",
           gray: "#61758A",
         },
+        blue: {
+          400: "#E7F3FE"
+        },
         neutral: {
           50: "#F2F2F2",
           100: "#E6E6E6",
