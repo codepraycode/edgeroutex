@@ -9,9 +9,17 @@ export default function Home() {
         <>
             <Header />
             <HeroSection />
-            
+
             <CaseStudiesSection />
-            <CallToAction />
+            <CallToAction
+                cta={{
+                    label: "Explore more case studies",
+                    link: "#"
+                }}
+                description="Join us and start leveraging the power of edge computing
+                        to drive innovation and achieve your transport goals."
+                title="Ready to Transform Your Transport Operations?"
+            />
         </>
     );
 }
