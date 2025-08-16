@@ -28,6 +28,7 @@ const navigationItems: NavigationItem[] = [
         id: "knowledge",
         label: "Knowledge base",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/5zVoNR1rVC.svg",
+        link: "/knowledge-base"
     },
     {
         id: "help",
