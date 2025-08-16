@@ -18,7 +18,7 @@ const CallToAction = ({
     description
 }: Props) => {
     return (
-        <section className="py-16 px-4 lg:px-16">
+        <section className="py-16">
             <div className="text-center lg:text-left">
                 <header className="mb-8 max-w-5xl">
                     <h2 className="text-3xl lg:text-6xl font-semibold text-neutral-900 mb-4">

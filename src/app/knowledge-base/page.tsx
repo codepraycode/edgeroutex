@@ -1,12 +1,12 @@
 import CallToAction from "@/components/common/CallToAction";
 import ArticlesList from "@/components/KnowledgeBase/ArticleList";
-import EdgeInsightsSection from "@/components/KnowledgeBase/EdgeInsights";
+import { KnowledgePageHeader } from "@/components/KnowledgeBase/PageHeader";
 
 export default function KnowledgeBase() {
     return (
         <>
-            <EdgeInsightsSection/>
-            <ArticlesList/>
+            <KnowledgePageHeader />
+            <ArticlesList />
             <CallToAction
                 cta={{
                     label: "Explore more case studies",
