@@ -111,11 +111,10 @@ export function ArticleItem({article}:{article: Article}) {
                 {/* Article Image - Only render if image exists */}
                 {article.image && (
                     <div className="sm:w-48 sm:flex-shrink-0">
-                        <Image
+                        <img
                             src={article.image as string}
                             alt={article.title as string}
                             className="w-full h-32 sm:h-full sm:min-h-[140px] object-cover sm:rounded-r-lg"
-                            fill
                         />
                     </div>
                 )}

@@ -24,6 +24,7 @@ const navigationItems: NavigationItem[] = [
         id: "recommendation",
         label: "Recommendation engine",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/eDu9ntBJ9z.svg",
+        link: "/recommendation"
     },
     {
         id: "knowledge",
