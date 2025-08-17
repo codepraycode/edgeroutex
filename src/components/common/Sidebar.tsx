@@ -2,6 +2,8 @@
 import { usePathname } from "next/navigation";
 import Logo from "./Logo";
 import Link from "next/link";
+import clsx from "clsx";
+import { useSidebar } from "@/context/SidebarContext";
 
 interface NavigationItem {
     id: string;
@@ -39,21 +41,71 @@ const navigationItems: NavigationItem[] = [
         link: "/help",
     },
 ];
-
 export default function SideBar() {
+    const { isSidebarOpen, closeSidebar, isMobile } = useSidebar();
+
     return (
-        <aside className="hidden lg:block lg:w-96 lg:fixed lg:h-screen lg:overflow-y-auto">
-            <nav className="w-full h-full bg-neutral-100 p-10">
-                <div className="mb-16">
-                    <Logo />
-                </div>
-                <NavigationMenu />
-            </nav>
-        </aside>
+        <>
+            {/* Mobile Overlay */}
+            {isMobile && isSidebarOpen && (
+                <div
+                    className="fixed inset-0 bg-black bg-opacity-50 z-40 lg:hidden"
+                    onClick={closeSidebar}
+                    aria-hidden="true"
+                />
+            )}
+
+            {/* Sidebar */}
+            <aside
+                id="mobile-sidebar"
+                className={clsx(
+                    // Base classes for desktop (always visible)
+                    "lg:block lg:w-96 lg:fixed lg:h-screen lg:overflow-y-auto",
+                    // Mobile classes
+                    "fixed top-0 left-0 h-screen w-80 z-50 overflow-y-auto",
+                    "transform transition-transform duration-300 ease-in-out",
+                    {
+                        // Mobile show/hide logic
+                        "translate-x-0": isMobile && isSidebarOpen,
+                        "-translate-x-full": isMobile && !isSidebarOpen,
+                        // Desktop is always visible (translate-x-0 by default)
+                        "lg:translate-x-0": true,
+                    }
+                )}
+            >
+                <nav className="w-full h-full bg-neutral-100 p-10">
+                    <div className="mb-16 flex items-center justify-between">
+                        <Logo />
+
+                        {/* Close button for mobile only */}
+                        {isMobile && (
+                            <button
+                                onClick={closeSidebar}
+                                type="button"
+                                className="lg:hidden p-2 rounded-lg text-neutral-600 hover:bg-neutral-200 focus:outline-none focus:ring-2 focus:ring-neutral-500 transition-colors"
+                                aria-label="Close sidebar"
+                            >
+                                <svg
+                                    className="w-6 h-6"
+                                    fill="none"
+                                    strokeLinecap="round"
+                                    strokeLinejoin="round"
+                                    strokeWidth={2}
+                                    viewBox="0 0 24 24"
+                                    stroke="currentColor"
+                                >
+                                    <path d="M6 18L18 6M6 6l12 12" />
+                                </svg>
+                            </button>
+                        )}
+                    </div>
+
+                    <NavigationMenu />
+                </nav>
+            </aside>
+        </>
     );
 }
-
-
 const NavigationMenu: React.FC = () => {
     const pathname = usePathname();
 

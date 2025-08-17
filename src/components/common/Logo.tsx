@@ -1,3 +1,4 @@
+import Link from "next/link";
 import React from "react";
 
 const Logo: React.FC = () => {
@@ -16,3 +17,15 @@ const Logo: React.FC = () => {
 };
 
 export default Logo;
+
+
+export function Logo2() {
+    return (
+        <Link href={"/"} className="relative z-10 flex items-center space-x-3">
+            <div className="w-8 h-8 bg-white rounded-lg flex items-center justify-center">
+                <div className="w-4 h-4 bg-blue-600 rounded"></div>
+            </div>
+            <span className="text-white font-semibold text-lg">EdgeRouteX</span>
+        </Link>
+    );
+}
