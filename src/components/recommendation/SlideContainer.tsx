@@ -158,9 +158,8 @@ export const SlideContainer = <T extends Record<string, any>>({
                 variant="numbered"
             />
 
-            <div className="max-w-4xl">
-                <CurrentSlideComponent {...slideProps} />
-            </div>
+            
+            <CurrentSlideComponent {...slideProps} />
         </div>
     );
 };

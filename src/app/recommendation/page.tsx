@@ -105,7 +105,7 @@ const RecommendationPage: React.FC = () => {
                 slides={slides}
                 initialData={initialFormData}
                 onComplete={handleComplete}
-                className="min-h-screen"
+                className="mb-20"
             />
         </div>
     );

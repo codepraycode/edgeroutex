@@ -1,6 +1,9 @@
 import { FormData, SlideProps } from "@/types/form.types";
-import { FormButton, FormInput } from "../form/FormComponents";
-import { NextButton } from "../form/button";
+import { FormButton, FormRadioGroup, FormSelect, FormTextarea } from "../form/FormComponents";
+import { DownloadButton, NextButton } from "../form/button";
+import { deviceOptions, infrastructureOptions, roadmapPhases, sampleData } from "@/data";
+import { RecommendationTable } from "./RecommendationTable";
+import { RecommendationRoadmap } from "./Roadmap";
 
 export const StrategySlide: React.FC<SlideProps<FormData>> = ({
     formData,
@@ -13,65 +16,23 @@ export const StrategySlide: React.FC<SlideProps<FormData>> = ({
     isLastStep,
 }) => {
     return (
-        <div className="space-y-8">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    Edge Strategy
-                </h2>
-                <p className="text-gray-600">
-                    Final details to complete your setup
+        <div className="space-y-8 max-w-7xl">
+            <RecommendationTable data={sampleData} />
+
+            <div className="max-w-3xl">
+                <RecommendationRoadmap phases={roadmapPhases} />
+            </div>
+
+            <div className="space-y-2 pt-10">
+                <h3 className="text-2xl font-semibold">Pro tips</h3>
+                <p>
+                    Ensure robust security measures, regularly update software,
+                    monitor performance metric
                 </p>
             </div>
 
-            <FormInput
-                label="Email Address"
-                type="email"
-                value={formData.email}
-                onChange={(e) => onDataChange("email", e.target.value)}
-                placeholder="Enter your email"
-                error={errors.email}
-            />
-
-            <div className="bg-blue-50 border border-blue-200 rounded-lg p-6">
-                <h3 className="font-semibold text-blue-900 mb-2">Summary</h3>
-                <div className="text-sm text-blue-800 space-y-1">
-                    <p>
-                        <strong>Infrastructure:</strong>{" "}
-                        {formData.infrastructure || "Not selected"}
-                    </p>
-                    <p>
-                        <strong>Objective:</strong>{" "}
-                        {formData.objective || "Not provided"}
-                    </p>
-                    <p>
-                        <strong>Device Count:</strong>{" "}
-                        {formData.deviceCount || "Not selected"}
-                    </p>
-                    <p>
-                        <strong>Email:</strong>{" "}
-                        {formData.email || "Not provided"}
-                    </p>
-                </div>
-            </div>
-
             <div className="pt-6 flex gap-4">
-                <NextButton
-                    onClick={onNext}
-                    loading={isLoading}
-                    disabled={isLoading}
-                >
-                    COMPLETE SETUP
-                </NextButton>
-
-                {!isFirstStep && (
-                    <FormButton
-                        variant="secondary"
-                        onClick={onBack}
-                        disabled={isLoading}
-                    >
-                        BACK
-                    </FormButton>
-                )}
+                <DownloadButton children={"Download Roadmap"}/>
             </div>
         </div>
     );

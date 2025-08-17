@@ -1,8 +1,9 @@
 import React from "react";
-import { FormSelect } from "@/components/form/FormComponents";
+import { FormRadioGroup, FormSelect, FormTextarea } from "@/components/form/FormComponents";
 import { NextButton } from "@/components/form/button";
 import { FormButton } from "@/components/form/FormComponents";
 import { SelectOption, SlideProps } from "@/types/form.types";
+import { deviceOptions, infrastructureOptions } from "@/data";
 
 interface FormData {
     infrastructure: string;
@@ -21,24 +22,9 @@ export const InfrastructureSlide: React.FC<SlideProps<FormData>> = ({
     isFirstStep,
     isLastStep,
 }) => {
-    const infrastructureOptions: SelectOption[] = [
-        { label: "Cloud only", value: "cloud" },
-        { label: "On-premises only", value: "onprem" },
-        { label: "Hybrid cloud", value: "hybrid" },
-        { label: "Multi-cloud", value: "multicloud" },
-    ];
-
+   
     return (
-        <div className="space-y-8">
-            <div className="text-center mb-8">
-                <h2 className="text-2xl font-bold text-gray-900 mb-2">
-                    Current Setup
-                </h2>
-                <p className="text-gray-600">
-                    Let's understand your current infrastructure
-                </p>
-            </div>
-
+        <div className="space-y-8 max-w-4xl">
             <FormSelect
                 label="What is your current infrastructure setup?"
                 value={formData.infrastructure}
@@ -47,6 +33,26 @@ export const InfrastructureSlide: React.FC<SlideProps<FormData>> = ({
                 placeholder="Select infrastructure type"
                 required
                 error={errors.infrastructure}
+            />
+
+            <FormTextarea
+                label="What's your primary objective with edge computing?"
+                value={formData.objective}
+                onChange={(e) => onDataChange("objective", e.target.value)}
+                placeholder="Enter your objectives..."
+                maxLength={150}
+                required
+                error={errors.objective}
+            />
+
+            <FormRadioGroup
+                label="How many devices or sensors will connect to the system?"
+                name="deviceCount"
+                value={formData.deviceCount}
+                onChange={(e) => onDataChange("deviceCount", e.target.value)}
+                options={deviceOptions}
+                required
+                error={errors.deviceCount}
             />
 
             <div className="pt-6 flex gap-4">

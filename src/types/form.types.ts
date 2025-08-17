@@ -132,3 +132,32 @@ export interface ValidationRule {
 
 export type FormData = any;
 
+
+
+// Types for the table data
+export interface RecommendationItem {
+  category: string;
+  details: string;
+  estimatedBudget: string;
+  deploymentComplexity: 'Low' | 'Medium' | 'High';
+}
+
+export interface RecommendationTableProps {
+  data: RecommendationItem[];
+  className?: string;
+}
+
+
+export interface RoadmapPhase {
+  id: number;
+  title: string;
+  duration: string;
+  status: 'completed' | 'in-progress' | 'upcoming';
+  icon: React.ComponentType<{ className?: string }>;
+}
+
+export interface RoadmapProps {
+  phases: RoadmapPhase[];
+  architectureDiagramUrl?: string;
+  className?: string;
+}
