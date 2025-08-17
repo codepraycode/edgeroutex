@@ -1,11 +1,6 @@
 "use client";
 
 import { useState } from "react";
-import Image from "next/image";
-import { Logo2 } from "@/components/common/Logo";
-
-// Assuming you have an Input component, replace this with your actual import
-// import { Input } from '@/components/ui/input';
 
 // Input component props interface
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
