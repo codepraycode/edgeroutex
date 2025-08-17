@@ -1,5 +1,6 @@
 import React from "react";
 import SearchBar from "../ui/SearchBar";
+import { caseStudies } from "@/data";
 
 
 interface CaseStudyCardProps {
@@ -29,57 +30,7 @@ export default CaseStudiesSection;
 
 
 const CaseStudyGrid: React.FC = () => {
-    const caseStudies = [
-        {
-            id: "1",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/DmtcDUtB4g.png",
-        },
-        {
-            id: "2",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/grRYKR25SE.png",
-        },
-        {
-            id: "3",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/FLVbROrQ2g.png",
-        },
-        {
-            id: "4",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/0HQqCSo9bs.png",
-        },
-        {
-            id: "5",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/EwjW0CpYvp.png",
-        },
-        {
-            id: "6",
-            title: "Enhanced Vehicle Perception (Urban)",
-            date: "Added Aug 8, 2025",
-            description:
-                "Edge computing enables autonomous vehicles to process sensor data locally, improving object detection and decision-making in complex environments.",
-            image: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/ptJEuHeMyT.png",
-        },
-    ];
-
+    
     return (
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-10">
             {caseStudies.map((study) => (
