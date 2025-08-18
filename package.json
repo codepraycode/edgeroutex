@@ -9,6 +9,7 @@
     "lint": "next lint"
   },
   "dependencies": {
+    "@supabase/ssr": "^0.6.1",
     "@supabase/supabase-js": "^2.55.0",
     "bcryptjs": "^3.0.2",
     "clsx": "^2.1.1",
@@ -20,6 +21,7 @@
     "next": "15.4.6",
     "react": "19.1.0",
     "react-dom": "19.1.0",
+    "react-hot-toast": "^2.6.0",
     "sass": "^1.90.0",
     "zod": "^4.0.17"
   },

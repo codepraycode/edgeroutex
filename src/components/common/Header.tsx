@@ -1,11 +1,43 @@
 "use client";
-import React from "react";
+
+import React, { useEffect, useState } from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { useSidebar } from "@/context/SidebarContext";
+import { createSupabaseBrowser } from "@/lib/supabase/client";
 
 const Header: React.FC = () => {
     const { isSidebarOpen, toggleSidebar } = useSidebar();
+    const [user, setUser] = useState<any>(null);
+    const supabase = createSupabaseBrowser();
+
+    useEffect(() => {
+        // Fetch current session
+        const getUser = async () => {
+            const {
+                data: { session },
+            } = await supabase.auth.getSession();
+            setUser(session?.user ?? null);
+        };
+
+        getUser();
+
+        // Listen for changes (login/logout)
+        const { data: authListener } = supabase.auth.onAuthStateChange(
+            async (_event, session) => {
+                setUser(session?.user ?? null);
+            }
+        );
+
+        return () => {
+            authListener.subscription.unsubscribe();
+        };
+    }, [supabase]);
+
+    const handleSignOut = async () => {
+        await supabase.auth.signOut();
+        setUser(null);
+    };
 
     return (
         <header className="relative">
@@ -15,12 +47,21 @@ const Header: React.FC = () => {
                     <Logo />
 
                     <div className="flex items-center space-x-3">
-                        <Link
-                            href="/signin"
-                            className="px-4 py-2 border border-neutral-900 rounded-lg text-neutral-900 font-semibold text-sm hover:bg-neutral-900 hover:text-neutral-50 transition-colors"
-                        >
-                            Sign In
-                        </Link>
+                        {user ? (
+                            <button
+                                onClick={handleSignOut}
+                                className="px-4 py-2 border border-neutral-900 rounded-lg text-neutral-900 font-semibold text-sm hover:bg-neutral-900 hover:text-neutral-50 transition-colors"
+                            >
+                                Sign Out
+                            </button>
+                        ) : (
+                            <Link
+                                href="/signin"
+                                className="px-4 py-2 border border-neutral-900 rounded-lg text-neutral-900 font-semibold text-sm hover:bg-neutral-900 hover:text-neutral-50 transition-colors"
+                            >
+                                Sign In
+                            </Link>
+                        )}
 
                         {/* Hamburger Menu Button */}
                         <button
@@ -53,14 +94,23 @@ const Header: React.FC = () => {
                 </div>
             </div>
 
-            {/* Desktop Header - Positioned over hero image */}
+            {/* Desktop Header */}
             <div className="hidden lg:block absolute top-0 right-0 z-10 p-6">
-                <Link
-                    href="/signin"
-                    className="px-6 py-3 border border-neutral-50 rounded-lg text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-neutral-900 transition-colors"
-                >
-                    Sign In
-                </Link>
+                {user ? (
+                    <button
+                        onClick={handleSignOut}
+                        className="px-6 py-3 border border-neutral-50 rounded-lg text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-neutral-900 transition-colors"
+                    >
+                        Sign Out
+                    </button>
+                ) : (
+                    <Link
+                        href="/signin"
+                        className="px-6 py-3 border border-neutral-50 rounded-lg text-neutral-50 font-semibold hover:bg-neutral-50 hover:text-neutral-900 transition-colors"
+                    >
+                        Sign In
+                    </Link>
+                )}
             </div>
         </header>
     );
