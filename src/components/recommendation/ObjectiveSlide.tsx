@@ -1,7 +1,14 @@
-import { FormData, SlideProps } from "@/types/form.types";
+import { SlideProps } from "@/types/form.types";
 import { NextButton } from "../form/button";
-import { FormButton, FormRadioGroup, FormSelect, FormTextarea } from "../form/FormComponents";
-import { deviceOptions, infrastructureOptions } from "@/data";
+import { FormButton, FormCheckboxGroup } from "../form/FormComponents";
+
+
+interface FormData {
+    // step 2
+    primaryObjectives: string[];
+    analyticsAutomation: string[];
+}
+
 
 export const ObjectiveSlide: React.FC<SlideProps<FormData>> = ({
     formData,
@@ -15,34 +22,37 @@ export const ObjectiveSlide: React.FC<SlideProps<FormData>> = ({
 }) => {
     return (
         <div className="space-y-8 max-w-4xl">
-            <FormSelect
-                label="What is your current infrastructure setup?"
-                value={formData.infrastructure}
-                onChange={(e) => onDataChange("infrastructure", e.target.value)}
-                options={infrastructureOptions}
-                placeholder="Select infrastructure type"
+            <FormCheckboxGroup
+                label="Primary Objectives for Edge Computing"
+                name="primaryObjectives"
+                values={formData.primaryObjectives}
+                onChange={(values) => onDataChange("primaryObjectives", values)}
+                options={[
+                    "Improve traffic flow and congestion management",
+                    "Enhance passenger/road user safety",
+                    "Enable predictive maintenance for vehicles/assets",
+                    "Reduce operational costs",
+                    "Improve sustainability / energy efficiency",
+                ]}
                 required
-                error={errors.infrastructure}
+                error={errors.primaryObjectives?.join(", ")}
             />
 
-            <FormTextarea
-                label="What's your primary objective with edge computing?"
-                value={formData.objective}
-                onChange={(e) => onDataChange("objective", e.target.value)}
-                placeholder="Enter your objectives..."
-                maxLength={150}
+            <FormCheckboxGroup
+                label="Desired Analytics & Automation"
+                name="analyticsAutomation"
+                values={formData.analyticsAutomation}
+                onChange={(values) =>
+                    onDataChange("analyticsAutomation", values)
+                }
+                options={[
+                    "Real-time dashboards and alerts",
+                    "AI/ML predictions (e.g., demand forecasting, accident detection)",
+                    "Automated control (traffic lights, fleet routing)",
+                    "Integration with enterprise systems (ERP, SCADA, TMS)",
+                ]}
                 required
-                error={errors.objective}
-            />
-
-            <FormRadioGroup
-                label="How many devices or sensors will connect to the system?"
-                name="deviceCount"
-                value={formData.deviceCount}
-                onChange={(e) => onDataChange("deviceCount", e.target.value)}
-                options={deviceOptions}
-                required
-                error={errors.deviceCount}
+                error={errors.analyticsAutomation?.join(", ")}
             />
 
             <div className="pt-6 flex gap-4">

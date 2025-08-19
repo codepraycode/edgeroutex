@@ -1,9 +1,9 @@
 import { FormData, SlideProps } from "@/types/form.types";
-import { FormButton, FormRadioGroup, FormSelect, FormTextarea } from "../form/FormComponents";
+import { FormButton, FormCheckboxGroup, FormInput, FormRadioGroup, FormSelect, FormTextarea } from "../form/FormComponents";
 import { NextButton } from "../form/button";
 import { deviceOptions, infrastructureOptions } from "@/data";
 
-export const DeviceSlide: React.FC<SlideProps<FormData>> = ({
+export const ConstraintsSlide: React.FC<SlideProps<FormData>> = ({
     formData,
     errors,
     onDataChange,
@@ -13,38 +13,100 @@ export const DeviceSlide: React.FC<SlideProps<FormData>> = ({
     isFirstStep,
     isLastStep,
 }) => {
-    
-
     return (
         <div className="space-y-8 max-w-4xl">
-            <FormSelect
-                label="What is your current infrastructure setup?"
-                value={formData.infrastructure}
-                onChange={(e) => onDataChange("infrastructure", e.target.value)}
-                options={infrastructureOptions}
-                placeholder="Select infrastructure type"
+            <FormRadioGroup
+                label="Budget Range for Implementation"
+                name="budget"
+                value={formData.budget}
+                onChange={(e) => onDataChange("budget", e.target.value)}
+                options={[
+                    "Low (< 50,000 GBP)",
+                    "Medium (50,000 – 200,000 GBP)",
+                    "High (> 200,000 GBP)",
+                ]}
                 required
-                error={errors.infrastructure}
+                error={errors.budget}
             />
 
-            <FormTextarea
-                label="What's your primary objective with edge computing?"
-                value={formData.objective}
-                onChange={(e) => onDataChange("objective", e.target.value)}
-                placeholder="Enter your objectives..."
-                maxLength={150}
+            <FormCheckboxGroup
+                label="Regulatory Requirements"
+                name="regulatory"
+                values={formData.regulatory}
+                onChange={(values) => onDataChange("regulatory", values)}
+                options={[
+                    "GDPR (EU)",
+                    "Local transport authority compliance",
+                    "NIST/ISO security standards",
+                ]}
                 required
-                error={errors.objective}
+                error={errors.regulatory}
+            />
+
+            <FormInput
+                label="Other Regulatory Requirement (optional)"
+                type="text"
+                value={formData.otherRegulatory}
+                onChange={(e) =>
+                    onDataChange("otherRegulatory", e.target.value)
+                }
+                placeholder="Enter other requirement..."
+                error={errors.otherRegulatory}
             />
 
             <FormRadioGroup
-                label="How many devices or sensors will connect to the system?"
-                name="deviceCount"
-                value={formData.deviceCount}
-                onChange={(e) => onDataChange("deviceCount", e.target.value)}
-                options={deviceOptions}
+                label="Data Handling"
+                name="dataHandling"
+                value={formData.dataHandling}
+                onChange={(e) => onDataChange("dataHandling", e.target.value)}
+                options={[
+                    "Must remain local (edge storage only)",
+                    "Cloud storage allowed",
+                ]}
                 required
-                error={errors.deviceCount}
+                error={errors.dataHandling}
+            />
+
+            <FormRadioGroup
+                label="Hardware Constraints"
+                name="hardware"
+                value={formData.hardware}
+                onChange={(e) => onDataChange("hardware", e.target.value)}
+                options={[
+                    "Low-power devices only",
+                    "Mixed (old & new hardware)",
+                    "No restrictions",
+                ]}
+                required
+                error={errors.hardware}
+            />
+
+            <FormRadioGroup
+                label="Required Latency for Decision-Making"
+                name="latency"
+                value={formData.latency}
+                onChange={(e) => onDataChange("latency", e.target.value)}
+                options={[
+                    "Real-time (< 1 second)",
+                    "Near real-time (1–5 seconds)",
+                    "Delayed (> 5 seconds acceptable)",
+                ]}
+                required
+                error={errors.latency}
+            />
+
+            <FormCheckboxGroup
+                label="Accessibility Needs"
+                name="accessibility"
+                values={formData.accessibility}
+                onChange={(values) => onDataChange("accessibility", values)}
+                options={[
+                    "Multi-language support",
+                    "Accessibility features (screen readers, simplified UI)",
+                    "None",
+                ]}
+                required
+                error={errors.accessibility}
             />
 
             <div className="pt-6 flex gap-4">
