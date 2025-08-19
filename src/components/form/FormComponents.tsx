@@ -11,6 +11,8 @@ import {
     RadioOption,
     ButtonVariant,
     ButtonSize,
+    FormCheckboxGroupProps,
+    CheckboxOption,
 } from "@/types/form.types";
 
 // 1. Select Dropdown Component
@@ -317,6 +319,101 @@ export const FormInput: React.FC<FormInputProps> = ({
                 max={max}
                 step={step}
             />
+            {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
+        </div>
+    );
+};
+
+
+export const FormCheckboxGroup: React.FC<FormCheckboxGroupProps> = ({
+    label,
+    name,
+    values = [],
+    onChange,
+    options = [],
+    required = false,
+    error = "",
+    disabled = false,
+    className = "",
+    layout = "vertical",
+}) => {
+    const normalizeOption = (
+        option: string | CheckboxOption
+    ): CheckboxOption => {
+        if (typeof option === "string") {
+            return { label: option, value: option };
+        }
+        return option;
+    };
+
+    const layoutClasses =
+        layout === "horizontal" ? "flex flex-wrap gap-6" : "space-y-3";
+
+    const handleCheckboxChange = (checkedValue: string) => {
+        let newValues = [...values];
+        if (newValues.includes(checkedValue)) {
+            newValues = newValues.filter((v) => v !== checkedValue);
+        } else {
+            newValues.push(checkedValue);
+        }
+        onChange(newValues);
+    };
+
+    return (
+        <div className={className}>
+            {label && (
+                <fieldset>
+                    <legend className="block text-sm font-medium text-gray-900 mb-4">
+                        {label}{" "}
+                        {required && <span className="text-red-500">*</span>}
+                    </legend>
+                    <div className={layoutClasses}>
+                        {options.map((option, index) => {
+                            const normalizedOption = normalizeOption(option);
+                            const checkboxId = `${name}-${index}`;
+                            const isDisabled =
+                                disabled || normalizedOption.disabled;
+
+                            return (
+                                <label
+                                    key={index}
+                                    htmlFor={checkboxId}
+                                    className="flex items-center"
+                                >
+                                    <input
+                                        id={checkboxId}
+                                        type="checkbox"
+                                        name={name}
+                                        value={normalizedOption.value}
+                                        checked={values.includes(
+                                            normalizedOption.value
+                                        )}
+                                        onChange={() =>
+                                            handleCheckboxChange(
+                                                normalizedOption.value
+                                            )
+                                        }
+                                        className="w-4 h-4 text-blue-600 border-gray-300 rounded focus:ring-blue-500 disabled:cursor-not-allowed"
+                                        required={
+                                            required && values.length === 0
+                                        }
+                                        disabled={isDisabled}
+                                    />
+                                    <span
+                                        className={`ml-3 text-sm ${
+                                            isDisabled
+                                                ? "text-gray-400"
+                                                : "text-gray-900"
+                                        }`}
+                                    >
+                                        {normalizedOption.label}
+                                    </span>
+                                </label>
+                            );
+                        })}
+                    </div>
+                </fieldset>
+            )}
             {error && <p className="mt-1 text-sm text-red-600">{error}</p>}
         </div>
     );

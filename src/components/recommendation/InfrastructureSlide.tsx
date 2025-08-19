@@ -3,16 +3,18 @@ import { FormRadioGroup, FormSelect, FormTextarea } from "@/components/form/Form
 import { NextButton } from "@/components/form/button";
 import { FormButton } from "@/components/form/FormComponents";
 import { SelectOption, SlideProps } from "@/types/form.types";
-import { deviceOptions, infrastructureOptions } from "@/data";
+// import { deviceOptions, infrastructureOptions } from "@/data";
 
 interface FormData {
-    infrastructure: string;
-    objective: string;
-    deviceCount: string;
-    email: string;
+    transportMode: string[]; // multiple choices
+    infrastructure: string; // single select
+    connectivity: string; // single select
+    devices: string[]; // multiple choices
+    assetCount: string; // single select
 }
 
-export const InfrastructureSlide: React.FC<SlideProps<FormData>> = ({
+
+export const CurrentSetupSlide: React.FC<SlideProps<FormData>> = ({
     formData,
     errors,
     onDataChange,
@@ -22,37 +24,78 @@ export const InfrastructureSlide: React.FC<SlideProps<FormData>> = ({
     isFirstStep,
     isLastStep,
 }) => {
-   
     return (
         <div className="space-y-8 max-w-4xl">
+            <FormRadioGroup
+                label="Transport Mode"
+                name="transportMode"
+                value={formData.transportMode?.join(", ")}
+                onChange={(e) =>
+                    onDataChange("transportMode", [e.target.value])
+                }
+                options={[
+                    "Buses",
+                    "Rail/Metro",
+                    "Traffic Management (signals, intersections)",
+                    "Freight & Logistics",
+                    "Mixed",
+                ]}
+                required
+                error={errors.transportMode?.join(", ")}
+            />
+
             <FormSelect
-                label="What is your current infrastructure setup?"
+                label="Current IT Infrastructure"
                 value={formData.infrastructure}
                 onChange={(e) => onDataChange("infrastructure", e.target.value)}
-                options={infrastructureOptions}
+                options={[
+                    "On-premise servers",
+                    "Cloud-based systems",
+                    "Hybrid (mix of edge & cloud)",
+                    "Minimal / None",
+                ]}
                 placeholder="Select infrastructure type"
                 required
                 error={errors.infrastructure}
             />
 
-            <FormTextarea
-                label="What's your primary objective with edge computing?"
-                value={formData.objective}
-                onChange={(e) => onDataChange("objective", e.target.value)}
-                placeholder="Enter your objectives..."
-                maxLength={150}
+            <FormSelect
+                label="Connectivity Availability"
+                value={formData.connectivity}
+                onChange={(e) => onDataChange("connectivity", e.target.value)}
+                options={[
+                    "High-speed (urban fibre/5G)",
+                    "Moderate (standard 4G/wired broadband)",
+                    "Low (rural / intermittent connectivity)",
+                ]}
+                placeholder="Select connectivity level"
                 required
-                error={errors.objective}
+                error={errors.connectivity}
             />
 
             <FormRadioGroup
-                label="How many devices or sensors will connect to the system?"
-                name="deviceCount"
-                value={formData.deviceCount}
-                onChange={(e) => onDataChange("deviceCount", e.target.value)}
-                options={deviceOptions}
+                label="Existing Edge/IoT Devices"
+                name="devices"
+                value={formData.devices?.join(", ")}
+                onChange={(e) => onDataChange("devices", [e.target.value])}
+                options={[
+                    "Cameras / Dashcams",
+                    "Telematics / GPS trackers",
+                    "Sensors (traffic, environmental, safety)",
+                    "None",
+                ]}
                 required
-                error={errors.deviceCount}
+                error={errors.devices?.join(", ")}
+            />
+
+            <FormRadioGroup
+                label="Number of Assets to Manage"
+                name="assetCount"
+                value={formData.assetCount}
+                onChange={(e) => onDataChange("assetCount", e.target.value)}
+                options={["< 100", "100 – 1,000", "> 1,000"]}
+                required
+                error={errors.assetCount}
             />
 
             <div className="pt-6 flex gap-4">

@@ -161,3 +161,22 @@ export interface RoadmapProps {
   architectureDiagramUrl?: string;
   className?: string;
 }
+
+export interface CheckboxOption {
+    label: string;
+    value: string;
+    disabled?: boolean;
+}
+
+export interface FormCheckboxGroupProps {
+    label?: string;
+    name: string;
+    values: string[]; // list of selected values
+    onChange: (values: string[]) => void;
+    options: (string | CheckboxOption)[];
+    required?: boolean;
+    error?: string;
+    disabled?: boolean;
+    className?: string;
+    layout?: "vertical" | "horizontal";
+}

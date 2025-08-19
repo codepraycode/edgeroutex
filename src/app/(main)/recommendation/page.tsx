@@ -1,9 +1,9 @@
 "use client";
 import React from "react";
 import {
-    InfrastructureSlide,
+    CurrentSetupSlide,
     ObjectiveSlide,
-    DeviceSlide,
+    ConstraintsSlide,
     StrategySlide,
     SlideContainer,
 } from "@/components/recommendation";
@@ -25,34 +25,82 @@ const RecommendationPage: React.FC = () => {
     };
 
     // Validation rules for each slide
-    const infrastructureValidation: ValidationRule[] = [
+    const currentSetupValidation: ValidationRule[] = [
+        {
+            field: "transportMode",
+            required: true,
+            message: "Please select at least one transport mode",
+        },
         {
             field: "infrastructure",
             required: true,
-            message: "Please select an infrastructure type",
+            message: "Please select your IT infrastructure",
+        },
+        {
+            field: "connectivity",
+            required: true,
+            message: "Please select connectivity availability",
+        },
+        {
+            field: "devices",
+            required: true,
+            message: "Please select at least one existing device type",
+        },
+        {
+            field: "assetCount",
+            required: true,
+            message: "Please select the number of assets to manage",
         },
     ];
 
-    const objectiveValidation: ValidationRule[] = [
+
+    const goalsValidation: ValidationRule[] = [
         {
-            field: "objective",
+            field: "primaryObjectives",
             required: true,
-            message: "Please describe your objective",
+            message: "Please select at least one primary objective",
         },
         {
-            field: "objective",
-            minLength: 10,
-            message: "Please provide more details (at least 10 characters)",
+            field: "analyticsAutomation",
+            required: true,
+            message: "Please select at least one analytics/automation need",
         },
     ];
 
-    const deviceValidation: ValidationRule[] = [
+
+    const constraintsValidation: ValidationRule[] = [
         {
-            field: "deviceCount",
+            field: "budget",
             required: true,
-            message: "Please select a device count range",
+            message: "Please select a budget range",
+        },
+        {
+            field: "regulatory",
+            required: true,
+            message: "Please select at least one regulatory requirement",
+        },
+        {
+            field: "dataHandling",
+            required: true,
+            message: "Please select a data handling option",
+        },
+        {
+            field: "hardware",
+            required: true,
+            message: "Please select a hardware constraint",
+        },
+        {
+            field: "latency",
+            required: true,
+            message: "Please select a latency requirement",
+        },
+        {
+            field: "accessibility",
+            required: true,
+            message: "Please select at least one accessibility option",
         },
     ];
+
 
     const strategyValidation: ValidationRule[] = [
         {
@@ -63,25 +111,26 @@ const RecommendationPage: React.FC = () => {
         },
     ];
 
+
     // Slide configuration
     const slides: SlideConfig[] = [
         {
             id: 1,
             title: "Current setup",
-            component: InfrastructureSlide,
-            validationRules: infrastructureValidation,
+            component: CurrentSetupSlide,
+            validationRules: currentSetupValidation,
         },
         {
             id: 2,
             title: "Your goals",
             component: ObjectiveSlide,
-            validationRules: objectiveValidation,
+            validationRules: goalsValidation,
         },
         {
             id: 3,
             title: "Key constraints",
-            component: DeviceSlide,
-            validationRules: deviceValidation,
+            component: ConstraintsSlide,
+            validationRules: constraintsValidation,
         },
         {
             id: 4,
@@ -90,6 +139,7 @@ const RecommendationPage: React.FC = () => {
             validationRules: strategyValidation,
         },
     ];
+
 
     const handleComplete = async (data: FormData) => {
         console.log("Form completed with data:", data);
