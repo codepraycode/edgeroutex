@@ -1,4 +1,4 @@
-import { RecommendationItem, RoadmapPhase, SelectOption } from "@/types/form.types";
+import { RoadmapPhase, SelectOption } from "@/types/form.types";
 import { Link2, Settings, Zap } from "lucide-react";
 
 export const deviceOptions = [
@@ -17,32 +17,32 @@ export  const infrastructureOptions: SelectOption[] = [
 ];
 
 
-export const sampleData: RecommendationItem[] = [
-    {
-      category: "Hardware",
-      details: "Robust edge device for data processing.",
-      estimatedBudget: "$5000-$7000",
-      deploymentComplexity: "Medium"
-    },
-    {
-      category: "Software stack",
-      details: "Optimized software for real-time analytics.",
-      estimatedBudget: "$2000-$9000",
-      deploymentComplexity: "Low"
-    },
-    {
-      category: "Network Infrastructure",
-      details: "High-bandwidth connectivity solutions for edge locations.",
-      estimatedBudget: "$3000-$5000",
-      deploymentComplexity: "High"
-    },
-    {
-      category: "Security Framework",
-      details: "Comprehensive security protocols for edge computing environment.",
-      estimatedBudget: "$1500-$4000",
-      deploymentComplexity: "Medium"
-    }
-  ];
+// export const sampleData: RecommendationItem[] = [
+//     {
+//       category: "Hardware",
+//       details: "Robust edge device for data processing.",
+//       estimatedBudget: "$5000-$7000",
+//       deploymentComplexity: "Medium"
+//     },
+//     {
+//       category: "Software stack",
+//       details: "Optimized software for real-time analytics.",
+//       estimatedBudget: "$2000-$9000",
+//       deploymentComplexity: "Low"
+//     },
+//     {
+//       category: "Network Infrastructure",
+//       details: "High-bandwidth connectivity solutions for edge locations.",
+//       estimatedBudget: "$3000-$5000",
+//       deploymentComplexity: "High"
+//     },
+//     {
+//       category: "Security Framework",
+//       details: "Comprehensive security protocols for edge computing environment.",
+//       estimatedBudget: "$1500-$4000",
+//       deploymentComplexity: "Medium"
+//     }
+//   ];
 
 
 export const roadmapPhases: RoadmapPhase[] = [
@@ -72,3 +72,4 @@ export const roadmapPhases: RoadmapPhase[] = [
 
 
   export * from "./caseStudies"
+  export * from "./recommendations"

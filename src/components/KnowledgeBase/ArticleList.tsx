@@ -1,3 +1,4 @@
+import { slugify } from "@/lib/slugify";
 import Image from "next/image";
 import Link from "next/link";
 
@@ -63,10 +64,7 @@ type Article = {[k:string]: string | number | null};
 
 export function ArticleItem({article}:{article: Article}) {
     return (
-        <article
-            
-            className="rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden"
-        >
+        <article className="rounded-lg shadow-sm hover:shadow-md transition-shadow duration-200 overflow-hidden">
             <div
                 className={`${
                     article.image
@@ -89,7 +87,7 @@ export function ArticleItem({article}:{article: Article}) {
                         </p>
                     </div>
                     <Link
-                        href={article.link as string}
+                        href={`/knowledge-base/${slugify(article.title as string)}`}
                         className="inline-flex items-center text-blue-600 hover:text-blue-700 font-medium transition-colors duration-200 w-fit text-sm"
                     >
                         Read more
