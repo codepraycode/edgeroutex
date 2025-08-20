@@ -4,6 +4,7 @@ import "./globals.scss";
 import { AuthProvider } from "@/providers/AuthProvider";
 import { SupabaseFeedback } from "@/components/ui/SupabaseFeedback";
 import { Toaster } from "react-hot-toast";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -58,7 +59,9 @@ export default function RootLayout({
                 className={`${geistSans.variable} ${geistMono.variable} antialiased`}
             >
                 <AuthProvider>
-                  {children}
+                  <Suspense fallback={null}>
+                    {children}
+                  </Suspense>
                   <SupabaseFeedback/>
                 </AuthProvider>
 
