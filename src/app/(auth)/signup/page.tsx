@@ -79,7 +79,7 @@ export default function SignUpPage() {
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { signUp, loading, error } = useAuth();
+    const { signUp, loading, error, redirectToLink } = useAuth();
 
     const handleInputChange =
         (field: keyof FormData) =>
@@ -212,12 +212,11 @@ export default function SignUpPage() {
                     </div>
                 </div>
 
-
                 <div className="text-center">
                     <p className="text-gray-600 text-sm">
                         Already have an account?{" "}
                         <a
-                            href="/signin"
+                            href={redirectToLink("/signin")}
                             className="text-blue-500 hover:text-blue-600 font-medium"
                         >
                             Sign In

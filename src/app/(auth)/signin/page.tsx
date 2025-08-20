@@ -58,9 +58,7 @@ export default function SignInPage() {
     });
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
-    const { signIn, loading, error } = useAuth();
-
-    const router = useRouter();
+    const { signIn, loading, error, redirectAfterAuth, redirectToLink} = useAuth();
 
     const handleInputChange =
         (field: keyof FormData) => (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -97,7 +95,7 @@ export default function SignInPage() {
             await signIn(formData.email, formData.password);
             // navigation can be handled here if you want: router.push('/dashboard')
             toast.success("Authenticated");
-            router.replace("/");
+            redirectAfterAuth();
         } catch (err: any) {
             setErrors((prev) => ({
                 ...prev,
@@ -180,7 +178,7 @@ export default function SignInPage() {
                     <p className="text-gray-600 text-sm">
                         Don't have an account?{" "}
                         <a
-                            href="/signup"
+                            href={redirectToLink("/signup")}
                             className="text-blue-500 hover:text-blue-600 font-medium"
                         >
                             Sign Up
