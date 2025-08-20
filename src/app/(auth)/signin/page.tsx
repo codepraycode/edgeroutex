@@ -6,6 +6,7 @@ import { ZodError } from "zod";
 import { signInSchema } from "@/lib/validations/authSchema";
 import toast from "react-hot-toast";
 import { useRouter } from "next/navigation";
+import { notImplemented } from "@/lib/functions";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
     placeholder: string;
@@ -190,6 +191,7 @@ export default function SignInPage() {
                 <div className="text-center mt-4">
                     <a
                         href="/forgot-password"
+                        onClick={notImplemented}
                         className="text-blue-500 hover:text-blue-600 text-sm"
                     >
                         Forgot your password?

@@ -1,13 +1,10 @@
+import { notImplemented } from "@/lib/functions";
 
 
 export function GoogleOAuth() {
-    const handleGoogleSignUp = (): void => {
-        // Handle Google signup
-        console.log("Google signup");
-    };
     return (
         <button
-            onClick={handleGoogleSignUp}
+            onClick={notImplemented}
             type="button"
             className="flex-1 border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
         >
@@ -35,13 +32,9 @@ export function GoogleOAuth() {
 
 
 export function FacebookOAuth() {
-    const handleFacebookSignUp = (): void => {
-        // Handle Facebook signup
-        console.log("Facebook signup");
-    };
     return (
         <button
-            onClick={handleFacebookSignUp}
+            onClick={notImplemented}
             type="button"
             className="flex-1 border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
         >

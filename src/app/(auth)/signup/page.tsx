@@ -4,6 +4,7 @@ import { useState } from "react";
 import { useAuth } from "@/hooks/useAuth";
 import { z } from "zod";
 import { ZodError } from "zod";
+import { FacebookOAuth, GoogleOAuth } from "@/components/auth/OAuth";
 
 // Input component props interface
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
@@ -78,7 +79,7 @@ export default function SignUpPage() {
     const [errors, setErrors] = useState<FormErrors>({});
     const [isSubmitting, setIsSubmitting] = useState(false);
 
-    const { signUp, signInWithProvider, loading, error } = useAuth();
+    const { signUp, loading, error } = useAuth();
 
     const handleInputChange =
         (field: keyof FormData) =>
@@ -205,25 +206,12 @@ export default function SignUpPage() {
                     <p className="text-gray-500 text-sm mb-4">
                         Or continue with
                     </p>
-
                     <div className="flex space-x-3 justify-center">
-                        <button
-                            onClick={() => signInWithProvider("google")}
-                            type="button"
-                            className="flex-1 border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
-                        >
-                            Google
-                        </button>
-
-                        <button
-                            onClick={() => signInWithProvider("facebook")}
-                            type="button"
-                            className="flex-1 border border-gray-300 hover:border-gray-400 text-gray-700 font-medium py-3 px-4 rounded-lg transition-colors duration-200 flex items-center justify-center"
-                        >
-                            Facebook
-                        </button>
+                        <GoogleOAuth />
+                        <FacebookOAuth />
                     </div>
                 </div>
+
 
                 <div className="text-center">
                     <p className="text-gray-600 text-sm">
