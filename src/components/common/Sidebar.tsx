@@ -40,6 +40,12 @@ const navigationItems: NavigationItem[] = [
         link: "/knowledge-base",
     },
     {
+        id: "industry-report",
+        label: "Industry reports",
+        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/your-report-icon.svg",
+        link: "/industry-report",
+    },
+    {
         id: "help",
         label: "Help & support",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/y5C5GrgGsn.svg",
