@@ -1,5 +1,6 @@
 import React from "react";
 import FeatureCards from "./FeatureCardList";
+import Link from "next/link";
 
 const HeroSection: React.FC = () => {
     return (
@@ -12,7 +13,7 @@ const HeroSection: React.FC = () => {
             <div className="absolute inset-0 bg-black/40"></div>
             <div className="relative z-10 flex items-center justify-center px-4 lg:px-16 mt-10">
                 <div className="text-center lg:text-left">
-                    <h1 className="text-3xl lg:text-8xl font-bold text-neutral-50 mb-6 leading-tight">
+                    <h1 className="text-3xl lg:text-7xl font-bold text-neutral-50 mb-6 leading-tight">
                         Revolutionizing Transport with Edge Computing
                     </h1>
                     <p className="text-base lg:text-lg font-semibold text-neutral-50 mb-8 max-w-2xl">
@@ -21,12 +22,12 @@ const HeroSection: React.FC = () => {
                         sustainability. Discover personalized advice, real-world
                         examples, and a comprehensive learning center.
                     </p>
-                    <button className="bg-primary-blue text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-blue/90 transition-colors">
+                    <Link href="/knowledge-base" className="bg-primary-blue text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-blue/90 transition-colors">
                         Get started
-                    </button>
+                    </Link>
                 </div>
             </div>
-            <div className="mt-20">
+            <div className="">
                 <FeatureCards />
             </div>
         </section>

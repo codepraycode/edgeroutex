@@ -4,55 +4,55 @@ import Logo from "./Logo";
 import Link from "next/link";
 import clsx from "clsx";
 import { useSidebar } from "@/context/SidebarContext";
+import { ReactNode } from "react";
+import { BarChart3, BookOpen, Brain, FileSearch, LifeBuoy, SquarePlay } from "lucide-react";
 
 interface NavigationItem {
     id: string;
     label: string;
-    icon: string;
+    icon: React.ReactNode;
     isActive?: boolean;
     link?: string;
 }
-
 
 const navigationItems: NavigationItem[] = [
     {
         id: "case-study",
         label: "Case study explorer",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/0MpYeTVsXd.svg",
+        icon: <FileSearch size={24} />, // Represents searching through documents/files
         link: "/",
     },
     {
         id: "recommendation",
         label: "Recommendation engine",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/eDu9ntBJ9z.svg",
+        icon: <Brain size={24} />, // Represents AI, intelligence, and thinking
         link: "/recommendation",
     },
     {
         id: "simulation",
         label: "Simulation tool",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/your-sim-icon.svg",
+        icon: <SquarePlay size={24} />, // Represents "play" or "run" within a container
         link: "/simulation",
     },
     {
         id: "knowledge",
         label: "Knowledge base",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/5zVoNR1rVC.svg",
+        icon: <BookOpen size={24} />, // The classic icon for knowledge and learning
         link: "/knowledge-base",
     },
     {
         id: "industry-report",
         label: "Industry reports",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/your-report-icon.svg",
+        icon: <BarChart3 size={24} />, // Represents data, analytics, and reports
         link: "/industry-report",
     },
     {
         id: "help",
         label: "Help & support",
-        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/y5C5GrgGsn.svg",
+        icon: <LifeBuoy size={24} />, // The universal icon for help and support
         link: "/help",
     },
 ];
-
 
 export default function SideBar() {
     const { isSidebarOpen, closeSidebar, isMobile } = useSidebar();
@@ -137,7 +137,7 @@ const NavigationMenu: React.FC = () => {
                             data-active={isActive}
                             className={"flex items-center gap-3 px-4 py-4 rounded-lg transition-colors"}
                         >
-                            <img src={item.icon} alt="" className="w-6 h-6" />
+                            {item.icon}
                             <span className="font-semibold">{item.label}</span>
                         </Link>
                     );

@@ -1,33 +1,13 @@
+import { features } from "@/data/features";
+import { ReactNode } from "react";
+
 interface FeatureCardProps {
     title: string;
     description: string;
-    icon: string;
+    icon: ReactNode;
 }
 
 export default function FeatureCards() {
-    const features = [
-        {
-            id: "1",
-            title: "Real time processing",
-            description:
-                "Process information directly reducing delays, boosting responsiveness.",
-            icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/q3SvWWXDmv.svg",
-        },
-        {
-            id: "2",
-            title: "Real time processing",
-            description:
-                "Process information directly reducing delays, boosting responsiveness.",
-            icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/3rVwoj9w5A.svg",
-        },
-        {
-            id: "3",
-            title: "Real time processing",
-            description:
-                "Process information directly reducing delays, boosting responsiveness.",
-            icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/rscd1RXq80.svg",
-        },
-    ];
 
     return (
         <section className="py-12 px-4 lg:px-8">
@@ -51,7 +31,7 @@ const FeatureCard: React.FC<FeatureCardProps> = ({
                 <h3 className="text-xl font-semibold text-primary-dark">
                     {title}
                 </h3>
-                <img src={icon} alt="" className="w-5 h-5" />
+                {icon}
             </header>
             <p className="text-primary-dark font-semibold leading-relaxed mt-auto max-w-[90%]">
                 {description}
