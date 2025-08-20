@@ -9,19 +9,6 @@
   --color-blue-100: #61758A;
 }
 
-/* @theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-} */
-
-/* @media (prefers-color-scheme: dark) {
-  :root {
-    --background: theme(colors.neutral.900);
-    --foreground: theme(colors.neutral.50);
-  }
-} */
-
-
 aside {
     background-color: var(--color-neutral-100);
     color: var(--color-neutral-700)
