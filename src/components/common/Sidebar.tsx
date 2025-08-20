@@ -19,20 +19,25 @@ const navigationItems: NavigationItem[] = [
         id: "case-study",
         label: "Case study explorer",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/0MpYeTVsXd.svg",
-        isActive: true,
-        link: "/"
+        link: "/",
     },
     {
         id: "recommendation",
         label: "Recommendation engine",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/eDu9ntBJ9z.svg",
-        link: "/recommendation"
+        link: "/recommendation",
+    },
+    {
+        id: "simulation",
+        label: "Simulation tool",
+        icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/your-sim-icon.svg",
+        link: "/simulation",
     },
     {
         id: "knowledge",
         label: "Knowledge base",
         icon: "https://codia-f2c.s3.us-west-1.amazonaws.com/image/2025-08-15/5zVoNR1rVC.svg",
-        link: "/knowledge-base"
+        link: "/knowledge-base",
     },
     {
         id: "help",
@@ -41,6 +46,8 @@ const navigationItems: NavigationItem[] = [
         link: "/help",
     },
 ];
+
+
 export default function SideBar() {
     const { isSidebarOpen, closeSidebar, isMobile } = useSidebar();
 

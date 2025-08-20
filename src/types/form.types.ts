@@ -136,9 +136,9 @@ export type FormData = any;
 
 // Types for the table data
 export interface RecommendationItem {
-  category: string;
-  details: string;
-  estimatedBudget: string;
+  category: string;              // e.g., "Edge Devices", "Deployment Model"
+  details: string;               // recommendation description
+  estimatedBudget: 'Low' | 'Medium' | 'High';
   deploymentComplexity: 'Low' | 'Medium' | 'High';
 }
 
@@ -151,9 +151,10 @@ export interface RecommendationTableProps {
 export interface RoadmapPhase {
   id: number;
   title: string;
-  duration: string;
-  status: 'completed' | 'in-progress' | 'upcoming';
-  icon: React.ComponentType<{ className?: string }>;
+  duration: string; // e.g. "3 months"
+  status: "completed" | "in-progress" | "upcoming";
+  icon: React.ComponentType<any>; // Lucide icon component
+  details?: string;
 }
 
 export interface RoadmapProps {

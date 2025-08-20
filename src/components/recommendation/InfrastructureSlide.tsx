@@ -24,6 +24,7 @@ export const CurrentSetupSlide: React.FC<SlideProps<FormData>> = ({
     isFirstStep,
     isLastStep,
 }) => {
+
     return (
         <div className="space-y-8 max-w-4xl">
             <FormRadioGroup
