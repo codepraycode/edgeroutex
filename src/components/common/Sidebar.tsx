@@ -119,30 +119,33 @@ export default function SideBar() {
         </>
     );
 }
+
 const NavigationMenu: React.FC = () => {
     const pathname = usePathname();
 
     return (
         <nav className="space-y-4">
-            <nav className="space-y-4">
-                {navigationItems.map((item) => {
-                    // Check if current path matches the item's link
-                    const isActive =
-                        pathname === item.link || pathname === `#${item.id}`;
+            {navigationItems.map((item) => {
+                // Check if current path matches the item's link or is a sub-path
+                const isActive = item.link
+                    ? pathname === item.link ||
+                      pathname.startsWith(`${item.link}/`)
+                    : pathname === `#${item.id}`;
 
-                    return (
-                        <Link
-                            key={item.id}
-                            href={item.link ?? `#${item.id}`}
-                            data-active={isActive}
-                            className={"flex items-center gap-3 px-4 py-4 rounded-lg transition-colors"}
-                        >
-                            {item.icon}
-                            <span className="font-semibold">{item.label}</span>
-                        </Link>
-                    );
-                })}
-            </nav>
+                return (
+                    <Link
+                        key={item.id}
+                        href={item.link ?? `#${item.id}`}
+                        data-active={isActive}
+                        className={
+                            "flex items-center gap-3 px-4 py-4 rounded-lg transition-colors"
+                        }
+                    >
+                        {item.icon}
+                        <span className="font-semibold">{item.label}</span>
+                    </Link>
+                );
+            })}
         </nav>
     );
 };
