@@ -87,4 +87,3 @@ MIT License – open for use, modification, and contribution.
 ---
 
 ✨ This project bridges **research & implementation**, showing how modern web technologies can deliver **practical decision-support tools** for complex domains.
-
