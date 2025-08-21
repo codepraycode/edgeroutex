@@ -1,36 +1,90 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
-## Getting Started
+# 🚦 EdgerRouteX - Edge Computing Advisory Framework for Transportation
 
-First, run the development server:
+> A **web-based advisory tool** that helps transportation stakeholders explore and plan **edge computing implementations** through tailored recommendations and roadmaps.
+
+[![Next.js](https://img.shields.io/badge/Next.js-15-black?style=flat-square\&logo=next.js)](https://nextjs.org/)
+[![Supabase](https://img.shields.io/badge/Supabase-Backend-green?style=flat-square\&logo=supabase)](https://supabase.com/)
+[![TailwindCSS](https://img.shields.io/badge/TailwindCSS-UI-38B2AC?style=flat-square\&logo=tailwind-css)](https://tailwindcss.com/)
+
+---
+
+## 📖 Overview
+
+This project is a **decision-support framework** for the transportation sector, designed to:
+
+* Capture **infrastructure, goals, and constraints** via an interactive form
+* Generate **tailored recommendations** for adopting edge computing
+* Provide a **downloadable roadmap** with clear phases
+* Offer access to curated **case studies and challenges**
+
+🔗 **System Architecture:** [View Diagram](https://hackmd.io/@codepraycode/rytaFuyYeg)
+
+---
+
+## ✨ Features
+
+* Multi-step **advisory form** with validation
+* **Recommendation engine** mapping objectives to strategies
+* Visual **roadmap generator** (exportable as PDF with timestamp)
+* Modular, reusable components (React + TypeScript)
+* Backend powered by **Supabase** (auth, storage, database)
+
+---
+
+## 🛠️ Tech Stack
+
+* **Frontend**: Next.js 15 (App Router), React, TypeScript
+* **UI**: TailwindCSS (custom theme, responsive)
+* **Backend/DB**: Supabase (Postgres + Auth)
+* **Deployment**: Vercel
+
+---
+
+## 🚀 Getting Started
 
 ```bash
+# Clone the repo
+git clone https://github.com/YOUR-USERNAME/edge-advisory-framework.git
+cd edge-advisory-framework
+
+# Install dependencies
+npm install
+
+# Configure env
+cp .env.example .env.local
+
+# Run locally
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+App will be running at:
+👉 [http://localhost:3000](http://localhost:3000)
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+---
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 📐 Project Highlights
 
-## Learn More
+* **Domain-driven design** – requirements drawn from edge computing research & transport SRS
+* **Clean architecture** – modular components, scalable recommendation logic
+* **Practical demo** – deployed prototype showing end-to-end advisory workflow
 
-To learn more about Next.js, take a look at the following resources:
+---
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## 👨‍💻 Author
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+**Precious Olusola**
+Software Engineer – Next.js | Supabase | Tailwind
+📧 [preciousbusiness10@gmail.com](mailto:preciousbusiness10@gmail.com)
+🌐 [GitHub](https://github.com/codepraycode)
 
-## Deploy on Vercel
+---
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+## 📜 License
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+MIT License – open for use, modification, and contribution.
+
+---
+
+✨ This project bridges **research & implementation**, showing how modern web technologies can deliver **practical decision-support tools** for complex domains.
+
