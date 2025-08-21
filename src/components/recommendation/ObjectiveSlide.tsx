@@ -1,16 +1,9 @@
 import { SlideProps } from "@/types/form.types";
 import { NextButton } from "../form/button";
 import { FormButton, FormCheckboxGroup } from "../form/FormComponents";
+import { RecommendationFormData } from "@/types/form.types"; // ✅ use global type
 
-
-interface FormData {
-    // step 2
-    primaryObjectives: string[];
-    analyticsAutomation: string[];
-}
-
-
-export const ObjectiveSlide: React.FC<SlideProps<FormData>> = ({
+export const ObjectiveSlide: React.FC<SlideProps<RecommendationFormData>> = ({
     formData,
     errors,
     onDataChange,

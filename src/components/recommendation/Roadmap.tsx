@@ -108,7 +108,7 @@ export const RecommendationRoadmap: React.FC<RoadmapProps> = ({
                     const isSelected = selectedPhase === phase.id;
 
                     return (
-                        <div key={phase.id} className="relative">
+                        <div key={phase.id + "nd" + index} className="relative">
                             <div
                                 className={`flex items-start gap-4 p-4 rounded-lg transition-all cursor-pointer hover:bg-gray-50 ${
                                     isSelected

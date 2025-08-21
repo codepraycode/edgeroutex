@@ -1,20 +1,13 @@
 import React from "react";
-import { FormRadioGroup, FormSelect, FormTextarea } from "@/components/form/FormComponents";
+import { FormRadioGroup, FormSelect } from "@/components/form/FormComponents";
 import { NextButton } from "@/components/form/button";
 import { FormButton } from "@/components/form/FormComponents";
-import { SelectOption, SlideProps } from "@/types/form.types";
-// import { deviceOptions, infrastructureOptions } from "@/data";
+import { SlideProps } from "@/types/form.types";
+import { RecommendationFormData } from "@/types/form.types"; // import global type
 
-interface FormData {
-    transportMode: string[]; // multiple choices
-    infrastructure: string; // single select
-    connectivity: string; // single select
-    devices: string[]; // multiple choices
-    assetCount: string; // single select
-}
-
-
-export const CurrentSetupSlide: React.FC<SlideProps<FormData>> = ({
+export const CurrentSetupSlide: React.FC<
+    SlideProps<RecommendationFormData>
+> = ({
     formData,
     errors,
     onDataChange,
@@ -24,7 +17,6 @@ export const CurrentSetupSlide: React.FC<SlideProps<FormData>> = ({
     isFirstStep,
     isLastStep,
 }) => {
-
     return (
         <div className="space-y-8 max-w-4xl">
             <FormRadioGroup

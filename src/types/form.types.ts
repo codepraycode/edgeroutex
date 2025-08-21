@@ -181,3 +181,28 @@ export interface FormCheckboxGroupProps {
     className?: string;
     layout?: "vertical" | "horizontal";
 }
+
+
+export interface RecommendationFormData {
+  // Current setup
+  transportMode: string[];
+  infrastructure: string;
+  connectivity: string;
+  devices: string[];
+  assetCount: string;
+
+  // Goals
+  primaryObjectives: string[];
+  analyticsAutomation: string[];
+
+  // Constraints
+  budget: string;
+  regulatory: string[];
+  dataHandling: string;
+  hardware: string;
+  latency: string;
+  accessibility: string[];
+
+  // Strategy
+  email: string;
+}

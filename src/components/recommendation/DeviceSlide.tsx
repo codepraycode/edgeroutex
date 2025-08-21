@@ -1,9 +1,12 @@
-import { FormData, SlideProps } from "@/types/form.types";
-import { FormButton, FormCheckboxGroup, FormInput, FormRadioGroup, FormSelect, FormTextarea } from "../form/FormComponents";
+import { SlideProps, RecommendationFormData } from "@/types/form.types";
+import {
+    FormButton,
+    FormCheckboxGroup,
+    FormRadioGroup,
+} from "../form/FormComponents";
 import { NextButton } from "../form/button";
-import { deviceOptions, infrastructureOptions } from "@/data";
 
-export const ConstraintsSlide: React.FC<SlideProps<FormData>> = ({
+export const ConstraintsSlide: React.FC<SlideProps<RecommendationFormData>> = ({
     formData,
     errors,
     onDataChange,
@@ -40,19 +43,19 @@ export const ConstraintsSlide: React.FC<SlideProps<FormData>> = ({
                     "NIST/ISO security standards",
                 ]}
                 required
-                error={errors.regulatory}
+                error={errors.regulatory?.join(", ")}
             />
 
-            <FormInput
+            {/* <FormInput
                 label="Other Regulatory Requirement (optional)"
                 type="text"
-                value={formData.otherRegulatory}
+                value={formData.otherRegulatory || ""}
                 onChange={(e) =>
                     onDataChange("otherRegulatory", e.target.value)
                 }
                 placeholder="Enter other requirement..."
                 error={errors.otherRegulatory}
-            />
+            /> */}
 
             <FormRadioGroup
                 label="Data Handling"
@@ -106,7 +109,7 @@ export const ConstraintsSlide: React.FC<SlideProps<FormData>> = ({
                     "None",
                 ]}
                 required
-                error={errors.accessibility}
+                error={errors.accessibility?.join(", ")}
             />
 
             <div className="pt-6 flex gap-4">

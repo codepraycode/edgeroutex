@@ -36,7 +36,7 @@ export default function SimulationPage() {
 
             {/* Controls */}
             <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-                <Card title="Number of Devices">
+                <Card title="Number of Vehicles">
                     <Slider
                         min={10}
                         max={1000}
