@@ -15,7 +15,7 @@ export default function Home() {
                 className="px-4 lg:px-16"
                 cta={{
                     label: "Explore more case studies",
-                    link: "#",
+                    link: "/knowledge-base",
                 }}
                 description="Join us and start leveraging the power of edge computing
                         to drive innovation and achieve your transport goals."

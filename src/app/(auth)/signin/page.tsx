@@ -5,7 +5,6 @@ import { useAuth } from "@/hooks/useAuth";
 import { ZodError } from "zod";
 import { signInSchema } from "@/lib/validations/authSchema";
 import toast from "react-hot-toast";
-import { useRouter } from "next/navigation";
 import { notImplemented } from "@/lib/functions";
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {

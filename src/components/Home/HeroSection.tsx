@@ -1,8 +1,13 @@
+"use client"
 import React from "react";
 import FeatureCards from "./FeatureCardList";
 import Link from "next/link";
+import { useAuth } from "@/hooks/useAuth";
 
 const HeroSection: React.FC = () => {
+
+    const { user } = useAuth();
+
     return (
         <section
             className="relative min-h-screen bg-cover bg-center bg-no-repeat flex flex-col items-center justify-center"
@@ -22,9 +27,9 @@ const HeroSection: React.FC = () => {
                         sustainability. Discover personalized advice, real-world
                         examples, and a comprehensive learning center.
                     </p>
-                    <Link href="/knowledge-base" className="bg-primary-blue text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-blue/90 transition-colors">
+                    {!user && <Link href="/signin" className="bg-primary-blue text-white px-8 py-4 rounded-lg font-bold hover:bg-primary-blue/90 transition-colors">
                         Get started
-                    </Link>
+                    </Link>}
                 </div>
             </div>
             <div className="">

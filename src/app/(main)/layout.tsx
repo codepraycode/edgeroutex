@@ -1,4 +1,3 @@
-
 import Footer from "@/components/common/Footer";
 import MobileOnlyHeader from "@/components/common/MobileOnlyHeader";
 import SideBar from "@/components/common/Sidebar";
@@ -13,7 +12,6 @@ export default function MainRootLayout({
         <SidebarProvider>
             <SideBar />
             <main className="flex-1 lg:ml-96">
-                <MobileOnlyHeader />
                 {children}
                 <Footer />
             </main>

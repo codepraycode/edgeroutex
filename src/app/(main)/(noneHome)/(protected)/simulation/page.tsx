@@ -51,7 +51,7 @@ export default function SimulationPage() {
                 <Card title="Latency (ms)">
                     <Slider
                         min={10}
-                        max={200}
+                        max={2000}
                         value={latency}
                         onChange={setLatency}
                     />
