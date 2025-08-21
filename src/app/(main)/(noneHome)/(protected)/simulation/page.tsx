@@ -44,7 +44,7 @@ export default function SimulationPage() {
                         onChange={setDevices}
                     />
                     <p className="mt-2 text-sm text-gray-700">
-                        {devices} devices
+                        {devices} Vehicles
                     </p>
                 </Card>
 
