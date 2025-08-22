@@ -1,43 +1,42 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Logo from "./Logo";
 import Link from "next/link";
 import { useSidebar } from "@/context/SidebarContext";
-import { createSupabaseBrowser } from "@/lib/supabase/client";
+import { useAuth } from "@/hooks/useAuth";
 
 const MobileOnlyHeader: React.FC = () => {
     const { isSidebarOpen, toggleSidebar } = useSidebar();
-    const [user, setUser] = useState<any>(null);
-    const supabase = createSupabaseBrowser();
+    const {user, signOut} = useAuth();
 
-    useEffect(() => {
-        // Fetch current session
-        const getUser = async () => {
-            const {
-                data: { session },
-            } = await supabase.auth.getSession();
-            setUser(session?.user ?? null);
-        };
+    // useEffect(() => {
+    //     // Fetch current session
+    //     const getUser = async () => {
+    //         const {
+    //             data: { session },
+    //         } = await supabase.auth.getSession();
+    //         setUser(session?.user ?? null);
+    //     };
 
-        getUser();
+    //     getUser();
 
-        // Listen for changes (login/logout)
-        const { data: authListener } = supabase.auth.onAuthStateChange(
-            async (_event, session) => {
-                setUser(session?.user ?? null);
-            }
-        );
+    //     // Listen for changes (login/logout)
+    //     const { data: authListener } = supabase.auth.onAuthStateChange(
+    //         async (_event, session) => {
+    //             setUser(session?.user ?? null);
+    //         }
+    //     );
 
-        return () => {
-            authListener.subscription.unsubscribe();
-        };
-    }, [supabase]);
+    //     return () => {
+    //         authListener.subscription.unsubscribe();
+    //     };
+    // }, [supabase]);
 
-    const handleSignOut = async () => {
-        await supabase.auth.signOut();
-        setUser(null);
-    };
+    // const handleSignOut = async () => {
+    //     await supabase.auth.signOut();
+    //     setUser(null);
+    // };
 
     return (
         <header className="relative">
@@ -49,7 +48,7 @@ const MobileOnlyHeader: React.FC = () => {
                     <div className="flex items-center space-x-3">
                         {user ? (
                             <button
-                                onClick={handleSignOut}
+                                onClick={signOut}
                                 className="px-4 py-2 border border-neutral-900 rounded-lg text-neutral-900 font-semibold text-sm hover:bg-neutral-900 hover:text-neutral-50 transition-colors"
                             >
                                 Sign Out
