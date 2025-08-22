@@ -7,29 +7,45 @@ export class AuthStore {
   user: User | null = null
   session: Session | null = null
   loading = false
-  error: string | null = null
+  error: string | null = null;
+  unsubscribe: any // add this property
 
   constructor() {
     makeAutoObservable(this)
     this.bootstrap()
-    supabase.auth.onAuthStateChange((_event, session) => {
+    this.unsubscribe = supabase.auth.onAuthStateChange((_event: any, session: any) => {
       runInAction(() => {
         this.session = session
         this.user = session?.user ?? null
       })
-    })
+    }).subscription
   }
+
+  dispose() {
+    this.unsubscribe?.()
+  }
+
 
   async bootstrap() {
     this.loading = true
-    const { data, error } = await supabase.auth.getSession()
-    runInAction(() => {
-      this.session = data.session ?? null
-      this.user = data.session?.user ?? null
-      this.error = error?.message ?? null
-      this.loading = false
-    })
+    try {
+      const { data, error } = await supabase.auth.getSession()
+      runInAction(() => {
+        this.session = data.session ?? null
+        this.user = data.session?.user ?? null
+        this.error = error?.message ?? null
+      })
+    } catch (err: any) {
+      runInAction(() => {
+        this.error = err?.message ?? 'Unknown error'
+      })
+    } finally {
+      runInAction(() => {
+        this.loading = false
+      })
+    }
   }
+
 
   async signInWithPassword(email: string, password: string) {
     this.loading = true
@@ -82,15 +98,19 @@ export class AuthStore {
 
   async signOut() {
     this.loading = true
+    this.error = null
     const { error } = await supabase.auth.signOut()
     runInAction(() => {
-      this.session = null
-      this.user = null
+      if (!error) {
+        this.session = null
+        this.user = null
+      }
       this.loading = false
       this.error = error?.message ?? null
     })
     if (error) throw error
   }
+
 }
 
 export const authStore = new AuthStore()

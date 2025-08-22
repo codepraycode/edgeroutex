@@ -1,11 +1,17 @@
 'use client'
 import { createBrowserClient } from '@supabase/ssr'
 
-export const createSupabaseBrowser = () =>
-  createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+let supabaseInstance: ReturnType<typeof createBrowserClient> | null = null
 
-// single shared instance for client components
-export const supabase = createSupabaseBrowser()
+export function getSupabaseBrowser() {
+  if (!supabaseInstance) {
+    supabaseInstance = createBrowserClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+  }
+  return supabaseInstance
+}
+
+// Single shared instance for client components
+export const supabase = getSupabaseBrowser()

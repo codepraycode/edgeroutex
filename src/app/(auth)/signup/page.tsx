@@ -140,6 +140,8 @@ export default function SignUpPage() {
         }
     };
 
+    const isLoading = isSubmitting;
+
     return (
         <div className="md:w-[50%] p-8 flex items-center justify-center max-w-full ">
             <div className="w-full max-w-lg">
@@ -161,7 +163,7 @@ export default function SignUpPage() {
                         value={formData.fullName}
                         onChange={handleInputChange("fullName")}
                         error={errors.fullName}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                     />
 
                     <Input
@@ -170,7 +172,7 @@ export default function SignUpPage() {
                         value={formData.email}
                         onChange={handleInputChange("email")}
                         error={errors.email}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                     />
 
                     <Input
@@ -179,7 +181,7 @@ export default function SignUpPage() {
                         value={formData.password}
                         onChange={handleInputChange("password")}
                         error={errors.password}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                     />
 
                     <Input
@@ -188,15 +190,15 @@ export default function SignUpPage() {
                         value={formData.confirmPassword}
                         onChange={handleInputChange("confirmPassword")}
                         error={errors.confirmPassword}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                     />
 
                     <button
                         type="submit"
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                         className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200"
                     >
-                        {isSubmitting || loading
+                        {isLoading
                             ? "Creating Account..."
                             : "SIGN UP"}
                     </button>

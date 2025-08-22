@@ -106,6 +106,8 @@ export default function SignInPage() {
         }
     };
 
+    const isLoading = isSubmitting;
+
     return (
         <div className="md:w-[50%] p-8 flex items-center justify-center max-w-full">
             <div className="w-full max-w-lg">
@@ -133,7 +135,7 @@ export default function SignInPage() {
                         value={formData.email}
                         onChange={handleInputChange("email")}
                         error={errors.email}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                         autoComplete="email"
                     />
 
@@ -143,16 +145,16 @@ export default function SignInPage() {
                         value={formData.password}
                         onChange={handleInputChange("password")}
                         error={errors.password}
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                         autoComplete="current-password"
                     />
 
                     <button
                         type="submit"
-                        disabled={isSubmitting || loading}
+                        disabled={isLoading}
                         className="w-full bg-blue-500 hover:bg-blue-600 disabled:bg-blue-300 disabled:cursor-not-allowed text-white font-medium py-3 px-4 rounded-lg transition-colors duration-200"
                     >
-                        {isSubmitting || loading ? (
+                        {isLoading ? (
                             <div className="flex items-center justify-center space-x-2">
                                 <div className="w-4 h-4 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
                                 <span>Signing In...</span>
