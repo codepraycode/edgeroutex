@@ -73,8 +73,9 @@ export class AuthStore {
     this.loading = true
     this.error = null
 
-    const emailRedirectTo =
-      options?.emailRedirectTo ?? (typeof window !== 'undefined' ? `${window.location.origin}/api/auth/callback` : undefined)
+    // const emailRedirectTo =
+    //   options?.emailRedirectTo ?? (typeof window !== 'undefined' ? `${window.location.origin}/api/auth/callback` : undefined)
+    const emailRedirectTo = `${window.location.origin}/api/auth/callback`;
 
     const { data, error } = await supabase.auth.signUp({
       email,
